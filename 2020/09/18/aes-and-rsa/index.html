@@ -482,13 +482,13 @@
 <p>2.1.5 输出反馈模式（OFB）</p>
 <p>2.1.6 计数器模式（CTR）</p>
 <p>以上三种加密模式安全性高且算法复杂，安全弱点较少，所以就先不在此讨论</p>
-<h1 id="非对称加密—RSA"><a href="#非对称加密—RSA" class="headerlink" title="非对称加密—RSA"></a>非对称加密—RSA</h1><h2 id="RSA原理"><a href="#RSA原理" class="headerlink" title="RSA原理"></a>RSA原理</h2><p>RSA应该是最早的公钥加密系统之一了，其名称是三个发明者的名字首字母缩写(Rivest–Shamir–Adleman)。其算法所基于的难题假设是质数分解问题，在此之前先简单介绍一下涉及到的数学基础。<br>1、欧拉函数：<em>φ(n)</em>，表示小于n的正整数中与n互质的数的数目。如果n能写做两个不同质数p和q的乘积，那么则有<em>φ(n) = (p\ -\ 1)(q\  -\ 1)。</em><br>2、同余：给定一个正整m，如果两个整数a和b满足(a-b)被m整除，那么就称为a和b对模m同余，记作<em>a≡b(mod\ m)</em>，其中≡是同余符号。同余的两个数有一些有趣的特性，比如反身性、对称性、传递性等等，详见《数论》。<br>3、模逆元：也叫模倒数(modular\ multiplicative\ inverse)。整数a的模逆元为整数x，则满足<em>ax≡1\ (mod\ m)</em>，其中m为模(modulus)。<br>4、欧拉公式：若a与n互为质数，则满足<em>a^φ(n)≡1\ (mod\ n)</em>，证明：参考拉格朗日定理。<br>5、lcm：least\ common\ multiple，最小公倍数。<br>6、gcd：greatest\ common\ devisor，最大公约数。<br>7、互质：co-prime，两个正整数a、b互质意味着能同时被它们整除的数只有1，即<em>gcd(a,b) = 1</em></p>
+<h1 id="非对称加密—RSA"><a href="#非对称加密—RSA" class="headerlink" title="非对称加密—RSA"></a>非对称加密—RSA</h1><h2 id="RSA原理"><a href="#RSA原理" class="headerlink" title="RSA原理"></a>RSA原理</h2><p>RSA应该是最早的公钥加密系统之一了，其名称是三个发明者的名字首字母缩写（Rivest–Shamir–Adleman）。其算法所基于的难题假设是质数分解问题，在此之前先简单介绍一下涉及到的数学基础。<br>1、欧拉函数：<em>φ(n)</em>，表示小于n的正整数中与n互质的数的数目。如果n能写做两个不同质数p和q的乘积，那么则有<em>φ(n) = （p - 1）\</em>（q  - 1）。<em><br>2、同余：给定一个正整m，如果两个整数a和b满足(a-b)被m整除，那么就称为a和b对模m同余，记作</em>a≡b(mod\ m)<em>，其中≡是同余符号。同余的两个数有一些有趣的特性，比如反身性、对称性、传递性等等，详见《数论》。<br>3、模逆元：也叫模倒数(modular\ multiplicative\ inverse)。整数a的模逆元为整数x，则满足</em>ax≡1 (mod\ m)<em>，其中m为模(modulus)。<br>4、欧拉公式：若a与n互为质数，则满足</em>a^φ(n)≡1 （mod n）<em>，证明：参考拉格朗日定理。<br>5、lcm：least common multiple，最小公倍数。<br>6、gcd：greatest common devisor，最大公约数。<br>7、互质：co-prime，两个正整数a、b互质意味着能同时被它们整除的数只有1，即</em>gcd（a,b）= 1*</p>
 <h2 id="秘钥构成"><a href="#秘钥构成" class="headerlink" title="秘钥构成"></a>秘钥构成</h2><p>有了上面的数学基础，再来看RSA公私钥的组成和生成过程。秘钥生成主要有以下几步，其实每一步在实践上都有注意事项，这个后面单独说。</p>
 <ol>
 <li><p>找到两个不同的质数<em>p</em>和<em>q</em>，计算其乘积<br>$$<br>N=pq<br>$$</p>
 </li>
 <li><p>根据欧拉函数，求得</p>
-<p>r = φ(N) = φ(p) * φ(q) =  (p-1) * (q-1)</p>
+<p>r = φ（N）= φ（p） * φ（q） =  （p-1\） * \（q-1\）</p>
 </li>
 <li><p>选择一个整数e，满足1 &lt; e &lt; r且gcd(e, r) = 1，即e和r互质</p>
 </li>
