@@ -507,15 +507,15 @@
 <h2 id="加密与解密"><a href="#加密与解密" class="headerlink" title="加密与解密"></a>加密与解密</h2><p>假设我们有公钥<em>(n, e)</em>，需要加密的内容为<em>m</em>，<em>m</em>是个小于<em>n</em>的正整数。则密文<em>c</em>为：<br>$$<br>m^e ≡ c\ (mod\ n)\<br>c = m^e\ mod\ n<br>$$<br>使用模指数运算，即便数字很大也可以很快算出。</p>
 <p>对方拥有私钥<em>(n, d)</em>，对密文<em>c</em>解密可获得明文<em>m</em>，方法如下：<br>$$<br>c^d≡(m^e)^d≡m\ (mod\ n)\<br>m=c^d\ mod\ n<br>$$</p>
 <h2 id="对RSA的攻击"><a href="#对RSA的攻击" class="headerlink" title="对RSA的攻击"></a>对RSA的攻击</h2><h3 id="共模攻击"><a href="#共模攻击" class="headerlink" title="共模攻击"></a>共模攻击</h3><p>在实现RSA时，为方便起见，可能给每一用户相同的模数n，虽然加解密密钥不同，然而这样做是不行的。</p>
-<p>设两个用户的公开钥分别为e1和e2，且e1和e2互素（一般情况都成立），明文消息是m，密文分别是：</p>
-<p>$$<br>c_1\ ≡\ m^e1\ (mod\ n)\\c_2\ ≡\ m^e2\ (mod\ n)<br>$$<br>例题：<a href="https://wiki.x10sec.org/crypto/asymmetric/rsa/rsa_module_attack/#_6" target="_blank" rel="noopener">XMan 一期夏令营课堂练习</a></p>
+<p>设两个用户的公开钥分别为e_1和e_2，且e_1和e_2互素（一般情况都成立），明文消息是m，密文分别是：</p>
+<p>$$<br>c_1 = m^{e_1}\bmod N \<br>c_2 = m^{e_2}\bmod N<br>$$<br>例题：<a href="https://wiki.x10sec.org/crypto/asymmetric/rsa/rsa_module_attack/#_6" target="_blank" rel="noopener">XMan 一期夏令营课堂练习</a></p>
 <h3 id="小公钥指数攻击"><a href="#小公钥指数攻击" class="headerlink" title="小公钥指数攻击"></a>小公钥指数攻击</h3><p> 假定将RSA算法同时用于多个用户（为讨论方便，以下假定3个），然而每个用户的加密指数（即公开钥）都很小。</p>
-<p>设3个用户的模数分别为ni (i=1,2,3)，当i≠j时，gcd(ni,nj)=1，否则通过gcd(ni,nj)有可能得出ni和nj的分解。设明文消息是m，密文分别是</p>
-<p>$$<br>c_1\ ≡\ m^3\ (mod\ n1)\\c_2\ ≡\ m^3\ (mod\ n2)\\c_3\ ≡\ m^3\ (mod\ n3)<br>$$</p>
+<p>设3个用户的模数分别为ni （i=1,2,3），当i≠j时，gcd（ni,nj）=1，否则通过gcd（ni,nj）有可能得出n_i和n_j的分解。设明文消息是m，密文分别是</p>
+<p>$$<br>c_1\ =\ m^3\ (mod\ n1)\\c_2\ =\ m^3\ (mod\ n2)\\c_3\ =\ m^3\ (mod\ n3)<br>$$</p>
 <h3 id="d-泄露攻击"><a href="#d-泄露攻击" class="headerlink" title="d 泄露攻击"></a>d 泄露攻击</h3><p>首先当 d 泄露之后，我们自然可以解密所有加密的消息。我们甚至还可以对模数 N 进行分解。</p>
 <p>利用以下工具可以直接进行计算</p>
 <ul>
-<li>RsaConverter.exe (<a href="https://sourceforge.net/projects/rsaconverter/" target="_blank" rel="noopener">https://sourceforge.net/projects/rsaconverter/</a> , for windows )</li>
+<li>RsaConverter.exe （<a href="https://sourceforge.net/projects/rsaconverter/" target="_blank" rel="noopener">https://sourceforge.net/projects/rsaconverter/</a> , for windows ）</li>
 <li><a href="https://github.com/ius/rsatool/blob/master/rsatool.py" target="_blank" rel="noopener">rsatool.py</a></li>
 </ul>
 <h3 id="暴力分解-N"><a href="#暴力分解-N" class="headerlink" title="暴力分解 N"></a>暴力分解 N</h3><p>攻击条件<a href="https://wiki.x10sec.org/crypto/asymmetric/rsa/rsa_module_attack/#_1" target="_blank" rel="noopener">¶</a>：</p>
