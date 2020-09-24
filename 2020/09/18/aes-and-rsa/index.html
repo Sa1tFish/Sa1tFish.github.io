@@ -488,22 +488,22 @@
 <p>ϕ（p） = p - 1 </p>
 <p>对于素数p^t</p>
 <p>ϕ（p^t）= p^（t） - p^（t-1)）</p>
-<p>例如： 90 = 2 <em> 3^2 </em> 5 </p>
-<p>ϕ(90) = ϕ（2） <em> ϕ（3^2） </em> ϕ（5） = （2-1）<em> （3^2 - 3^1）</em> （5 - 1）= 24</p>
+<p>例如： 90 = 2 * 3^2 * 5 </p>
+<p>ϕ(90) = ϕ（2） * ϕ（3^2） * ϕ（5） = （2-1）* （3^2 - 3^1）* （5 - 1）= 24</p>
 <p>2、同余：给定一个正整m，如果两个整数a和b满足(a-b)被m整除，那么就称为a和b对模m同余，记作<em>a≡b(mod\ m)</em>，其中≡是同余符号。同余的两个数有一些有趣的特性，比如反身性、对称性、传递性等等，详见《数论》。<br>3、模逆元：也叫模倒数(modular\ multiplicative\ inverse)。整数a的模逆元为整数x，则满足<em>ax≡1 (mod\ m)</em>，其中m为模(modulus)。<br>4、欧拉公式：若a与n互为质数，则满足<em>a^φ(n)≡1 （mod n）</em>，证明：参考拉格朗日定理。</p>
 <p>例如：</p>
 <p> 如果 m&gt;1 a与互素 </p>
-<p>a^ϕ（m）\ ≡\ 1\ mod m </p>
+<p>a^ϕ（m） ≡ 1 mod m </p>
 <p>例如： m = 11,a = 2 </p>
 <p>（2,11）= 1 </p>
 <p>ϕ（11）= 10</p>
-<p> 2^10\ ≡\ 1\ mod\ 11 </p>
-<p>5、lcm：least common multiple，最小公倍数。<br>6、gcd：greatest common devisor，最大公约数。<br>7、互质：co-prime，两个正整数a、b互质意味着能同时被它们整除的数只有1，即*gcd（a,b）= 1。</p>
+<p> 2^10 ≡ 1 mod 11 </p>
+<p>5、lcm：least common multiple，最小公倍数。<br>6、gcd：greatest common devisor，最大公约数。<br>7、互质：co-prime，两个正整数a、b互质意味着能同时被它们整除的数只有1，即gcd（a,b）= 1。</p>
 <p>8、费马定理</p>
 <p> 如果p是素数，a为正整数且不能被p整除</p>
-<p>a^（p-1）\ mod\ p = 1\ mod\ p</p>
-<p>（a^p <em> a^-1 </em> a)）mod p = （1 * a）\ mod\ p </p>
-<p>a^p\ mod\ p = a\ mod\ p</p>
+<p>a^（p-1） mod p = 1 mod\ p</p>
+<p>（a^p * a^-1 * a）mod p = （1 * a） mod  p </p>
+<p>a^p mod p = a mod p</p>
 <h2 id="秘钥构成"><a href="#秘钥构成" class="headerlink" title="秘钥构成"></a>秘钥构成</h2><p>有了上面的数学基础，再来看RSA公私钥的组成和生成过程。秘钥生成主要有以下几步，其实每一步在实践上都有注意事项，这个后面单独说。</p>
 <ol>
 <li><p>找到两个不同的质数<em>p</em>和<em>q</em>，计算其乘积<br>$$<br>N=pq<br>$$</p>
@@ -527,8 +527,8 @@
 <p>（3）这就是难题假设的关键：当n很大的时候很难计算出对应的<em>p</em>和<em>q</em>。</p>
 <h2 id="加密与解密"><a href="#加密与解密" class="headerlink" title="加密与解密"></a>加密与解密</h2><p>假设我们有公钥<em>(n, e)</em>，需要加密的内容为<em>m</em>，<em>m</em>是个小于<em>n</em>的正整数。则密文<em>c</em>为：<br>$$<br>m^e ≡ c\ (mod\ n)\<br>c = m^e\ mod\ n<br>$$<br>使用模指数运算，即便数字很大也可以很快算出。</p>
 <p>对方拥有私钥<em>(n, d)</em>，对密文<em>c</em>解密可获得明文<em>m</em>，方法如下：<br>$$<br>c^d≡(m^e)^d≡m\ (mod\ n)\<br>m=c^d\ mod\ n<br>$$</p>
-<h2 id="加解密过程"><a href="#加解密过程" class="headerlink" title="加解密过程"></a>加解密过程</h2><p><img src="%E5%8A%A0%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B1.png" alt></p>
-<p><img src="%E5%8A%A0%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B2.png" alt></p>
+<h2 id="加解密过程"><a href="#加解密过程" class="headerlink" title="加解密过程"></a>加解密过程</h2><p><img src="%E5%8A%A0%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B1.png" alt="加解密过程1"></p>
+<p><img src="%E5%8A%A0%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B2.png" alt="加解密过程2"></p>
 <p><img src="%E5%8A%A0%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B3.png" alt="加解密过程3"></p>
 <p><img src="%E5%8A%A0%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B4.png" alt="加解密过程4"></p>
 <p><img src="%E5%8A%A0%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B5.png" alt="加解密过程5"></p>
